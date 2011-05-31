@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+void swap(int **a, int **b) {
+  int *temp;
+  temp = *a; *a = *b; *b = temp;
+}
+
+int main() {
+  int t[4] = { 2, 8, 1, 3 }, *a[4];
+  int i, j;
+
+  for (i = 0; i < 4; i++)
+    printf("%d ", t[i]);
+  printf("\n");
+
+  for (i = 0; i < 4; i++)
+    a[i] = &t[i];
+
+   for (i = 0; i < 4; i++)
+    for (j = i + 1; j < 4; j++)
+      if (*a[i] > *a[j])
+        swap(&a[i], &a[j]);
+
+  for (i = 0; i < 4; i++)
+    printf("%d ", *a[i]);
+  printf("\n");
+
+  return 0;
+}
+
